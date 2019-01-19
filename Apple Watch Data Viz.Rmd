@@ -1,0 +1,30 @@
+---
+title: "Apple Watch Data Viz"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r yoga}
+
+setwd("/Users/nickorangio/Main Directory/Personal Projects/R Data Viz")
+
+yoga_data = read.csv('edited_csv', header = TRUE)
+
+library("ggplot2")
+
+#kcal by duration
+ggplot(yoga_data, aes(x=Duration, y=Total.Energy.kcal)) +      geom_point(aes(size=Max.Heart.Rate, color=Month)) +
+  theme(axis.text.x = element_text(size = 7, angle = 40, vjust = 0.7)) +
+  ylab("Total kcal burned")
+
+#kcal by date
+ggplot(yoga_data, aes(x=Start, y=Total.Energy.kcal)) +      geom_point(aes(size=Max.Heart.Rate, color=Month)) +
+  theme(axis.text.x = element_text(size = 7, angle = 40, vjust = 0.5)) +
+  ylab("Total kcal burned")
+
+```
+
